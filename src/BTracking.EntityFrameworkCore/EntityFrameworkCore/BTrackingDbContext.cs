@@ -1,9 +1,14 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using BTracking.UT.Cities;
+using BTracking.UT.Countries;
+using BTracking.UT.Towns;
+using Microsoft.EntityFrameworkCore;
+using NetTopologySuite.Geometries;
 using Volo.Abp.AuditLogging.EntityFrameworkCore;
 using Volo.Abp.BackgroundJobs.EntityFrameworkCore;
 using Volo.Abp.Data;
 using Volo.Abp.DependencyInjection;
 using Volo.Abp.EntityFrameworkCore;
+using Volo.Abp.EntityFrameworkCore.Modeling;
 using Volo.Abp.FeatureManagement.EntityFrameworkCore;
 using Volo.Abp.Identity;
 using Volo.Abp.Identity.EntityFrameworkCore;
@@ -24,6 +29,9 @@ public class BTrackingDbContext :
     ITenantManagementDbContext
 {
     /* Add DbSet properties for your Aggregate Roots / Entities here. */
+    public DbSet<Country> Countries { get; set; }
+    public DbSet<City> Cities { get; set; }
+    public DbSet<Town> Towns { get; set; }
 
     #region Entities from the modules
 
@@ -75,11 +83,14 @@ public class BTrackingDbContext :
 
         /* Configure your own tables/entities inside here */
 
-        //builder.Entity<YourEntity>(b =>
-        //{
-        //    b.ToTable(BTrackingConsts.DbTablePrefix + "YourEntities", BTrackingConsts.DbSchema);
-        //    b.ConfigureByConvention(); //auto configure for the base class props
-        //    //...
-        //});
+        builder.Entity<Country>(b =>
+        {
+            b.ToTable(BTrackingConsts.DbTablePrefix + "Country", BTrackingConsts.DbSchema);
+            b.ConfigureByConvention();
+
+            b.Property(a => a.Id).HasDefaultValueSql("(NEWSEQUENTIALID())");
+            b.Property(x => x.Code).HasColumnName(nameof(Country.Code)).IsRequired();
+            b.Property(x => x.Shape).HasColumnName(nameof(Country.Shape));
+        });
     }
 }
