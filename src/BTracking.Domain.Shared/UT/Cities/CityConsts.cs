@@ -2,20 +2,17 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace BTracking.UT.Countries
+namespace BTracking.UT.Cities
 {
 
-    public static class CountryConsts
+    public static class CityConsts
     {
         private const string DefaultSorting = "{0}Name asc";
 
         public static string GetDefaultSorting(bool withEntityName)
         {
-            return string.Format(DefaultSorting, withEntityName ? "Location." : string.Empty);
+            return string.Format(DefaultSorting, withEntityName ? "City." : string.Empty);
         }
-
-        public const int PropertyCodeMinLength = 0;
-        public const int PropertyCodeMaxLength = 5;
 
         public const int PropertyNameMinLength = 0;
         public const int PropertyNameMaxLength = 255;

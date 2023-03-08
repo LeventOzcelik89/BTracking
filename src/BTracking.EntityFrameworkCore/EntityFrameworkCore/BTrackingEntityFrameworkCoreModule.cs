@@ -12,6 +12,7 @@ using Volo.Abp.OpenIddict.EntityFrameworkCore;
 using Volo.Abp.PermissionManagement.EntityFrameworkCore;
 using Volo.Abp.SettingManagement.EntityFrameworkCore;
 using Volo.Abp.TenantManagement.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 
 namespace BTracking.EntityFrameworkCore;
 
@@ -47,7 +48,7 @@ public class BTrackingEntityFrameworkCoreModule : AbpModule
         {
                 /* The main point to change your DBMS.
                  * See also BTrackingMigrationsDbContextFactory for EF Core tooling. */
-            options.UseSqlServer();
+            options.UseSqlServer(sqlOption => sqlOption.UseNetTopologySuite());
         });
 
     }

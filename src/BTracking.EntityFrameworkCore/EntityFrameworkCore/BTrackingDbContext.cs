@@ -89,8 +89,34 @@ public class BTrackingDbContext :
             b.ConfigureByConvention();
 
             b.Property(a => a.Id).HasDefaultValueSql("(NEWSEQUENTIALID())");
-            b.Property(x => x.Code).HasColumnName(nameof(Country.Code)).IsRequired();
-            b.Property(x => x.Shape).HasColumnName(nameof(Country.Shape));
+            b.Property(a => a.CreationTime).HasDefaultValueSql("(GETDATE())");
+            b.Property(a => a.Shape).HasColumnName(nameof(Country.Shape)).HasColumnType("geometry");
+            b.Property(a => a.Code).HasColumnName(nameof(Country.Code)).HasMaxLength(CountryConsts.PropertyCodeMaxLength).IsRequired();
+            b.Property(a => a.Name).HasColumnName(nameof(Country.Name)).HasMaxLength(CountryConsts.PropertyNameMaxLength).IsRequired();
         });
+
+        builder.Entity<City>(b =>
+        {
+            b.ToTable(BTrackingConsts.DbTablePrefix + "City", BTrackingConsts.DbSchema);
+            b.ConfigureByConvention();
+
+            b.Property(a => a.Id).HasDefaultValueSql("(NEWSEQUENTIALID())");
+            b.Property(a => a.CreationTime).HasDefaultValueSql("(GETDATE())");
+            b.Property(a => a.Shape).HasColumnName(nameof(Country.Shape)).HasColumnType("geometry");
+            b.Property(a => a.Name).HasColumnName(nameof(Country.Name)).HasMaxLength(CityConsts.PropertyNameMaxLength).IsRequired();
+            b.HasMany(a => a.CityTowns).WithOne(a => a.TownCity).HasForeignKey(a => a.CityId);
+        });
+
+        builder.Entity<Town>(b =>
+        {
+            b.ToTable(BTrackingConsts.DbTablePrefix + "Town", BTrackingConsts.DbSchema);
+            b.ConfigureByConvention();
+
+            b.Property(a => a.Id).HasDefaultValueSql("(NEWSEQUENTIALID())");
+            b.Property(a => a.CreationTime).HasDefaultValueSql("(GETDATE())");
+            b.Property(a => a.Shape).HasColumnName(nameof(Country.Shape)).HasColumnType("geometry");
+            b.Property(a => a.Name).HasColumnName(nameof(Country.Name)).HasMaxLength(TownConsts.PropertyNameMaxLength).IsRequired();
+        });
+
     }
 }

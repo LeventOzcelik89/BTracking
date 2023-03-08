@@ -11,6 +11,10 @@ using BTracking.MultiTenancy;
 using BTracking.Web.Menus;
 using Microsoft.OpenApi.Models;
 using OpenIddict.Validation.AspNetCore;
+
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+
 using Volo.Abp;
 using Volo.Abp.Account.Web;
 using Volo.Abp.AspNetCore.Mvc;
@@ -37,6 +41,7 @@ using Volo.Abp.UI.Navigation.Urls;
 using Volo.Abp.UI;
 using Volo.Abp.UI.Navigation;
 using Volo.Abp.VirtualFileSystem;
+using BTracking.Infrastructure.Converter.Json;
 
 namespace BTracking.Web;
 
@@ -93,6 +98,17 @@ public class BTrackingWebModule : AbpModule
         ConfigureNavigationServices();
         ConfigureAutoApiControllers();
         ConfigureSwaggerServices(context.Services);
+
+
+        context.Services.AddControllers().AddNewtonsoftJson();
+        Configure<JsonOptions>(a =>
+        {
+            a.JsonSerializerOptions.Converters.Add(new GeometryConverter());
+            a.JsonSerializerOptions.Converters.Add(new PolygonConverter());
+            a.JsonSerializerOptions.Converters.Add(new PointConverter());
+            a.JsonSerializerOptions.Converters.Add(new LineStringConverter());
+        });
+
     }
 
     private void ConfigureAuthentication(ServiceConfigurationContext context)

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Volo.Abp.Auditing;
 using Volo.Abp.Domain.Entities.Auditing;
 
 namespace BTracking.UT.Cities
@@ -12,6 +13,7 @@ namespace BTracking.UT.Cities
     public class City : FullAuditedEntity<Guid>
     {
         public virtual string Name { get; set; }
+        [DisableAuditing]
         public virtual Geometry Shape { get; set; }
 
 

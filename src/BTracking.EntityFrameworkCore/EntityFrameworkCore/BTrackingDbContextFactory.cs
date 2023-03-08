@@ -17,7 +17,7 @@ public class BTrackingDbContextFactory : IDesignTimeDbContextFactory<BTrackingDb
         var configuration = BuildConfiguration();
 
         var builder = new DbContextOptionsBuilder<BTrackingDbContext>()
-            .UseSqlServer(configuration.GetConnectionString("Default"));
+            .UseSqlServer(configuration.GetConnectionString("Default"), sqlOption => sqlOption.UseNetTopologySuite());
 
         return new BTrackingDbContext(builder.Options);
     }
