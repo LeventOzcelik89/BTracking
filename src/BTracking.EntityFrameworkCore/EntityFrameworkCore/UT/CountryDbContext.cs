@@ -56,11 +56,11 @@ namespace BTracking.EntityFrameworkCore.UT
         protected virtual IQueryable<Country> ApplyFilter(
             IQueryable<Country> query,
             string filterText,
-            string locationCode = null)
+            string countryCode = null)
         {
             return query
                     .WhereIf(!string.IsNullOrWhiteSpace(filterText), e => e.Name.Contains(filterText))
-                    .WhereIf(!string.IsNullOrWhiteSpace(locationCode), e => e.Code.Contains(locationCode));
+                    .WhereIf(!string.IsNullOrWhiteSpace(countryCode), e => e.Code.Contains(countryCode));
         }
 
     }

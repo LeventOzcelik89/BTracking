@@ -31,7 +31,7 @@ namespace BTracking.Migrations
                         .HasColumnType("uniqueidentifier")
                         .HasDefaultValueSql("(NEWSEQUENTIALID())");
 
-                    b.Property<Guid?>("CountryId")
+                    b.Property<Guid>("CountryId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("CreationTime")
@@ -1814,9 +1814,13 @@ namespace BTracking.Migrations
 
             modelBuilder.Entity("BTracking.UT.Cities.City", b =>
                 {
-                    b.HasOne("BTracking.UT.Countries.Country", null)
+                    b.HasOne("BTracking.UT.Countries.Country", "CityCountry")
                         .WithMany("CountryCities")
-                        .HasForeignKey("CountryId");
+                        .HasForeignKey("CountryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("CityCountry");
                 });
 
             modelBuilder.Entity("BTracking.UT.Towns.Town", b =>

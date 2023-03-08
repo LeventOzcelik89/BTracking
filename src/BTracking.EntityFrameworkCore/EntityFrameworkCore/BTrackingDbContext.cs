@@ -93,6 +93,7 @@ public class BTrackingDbContext :
             b.Property(a => a.Shape).HasColumnName(nameof(Country.Shape)).HasColumnType("geometry");
             b.Property(a => a.Code).HasColumnName(nameof(Country.Code)).HasMaxLength(CountryConsts.PropertyCodeMaxLength).IsRequired();
             b.Property(a => a.Name).HasColumnName(nameof(Country.Name)).HasMaxLength(CountryConsts.PropertyNameMaxLength).IsRequired();
+            b.HasMany(a => a.CountryCities).WithOne(a => a.CityCountry).HasForeignKey(a => a.CountryId);
         });
 
         builder.Entity<City>(b =>

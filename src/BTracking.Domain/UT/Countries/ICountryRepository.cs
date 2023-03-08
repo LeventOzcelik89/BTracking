@@ -14,19 +14,23 @@ namespace BTracking.UT.Countries
 
         Task<List<Country>> GetListAsync(
             string filterText = null,
-            string locationCode = null,
+            string countryCode = null,
             string sorting = null,
             int maxResultCount = int.MaxValue,
             int skipCount = 0,
             CancellationToken cancellationToken = default
-        );
+            );
 
         Task<long> GetCountAsync(
             string filterText = null,
-            string locationCode = null,
-            CancellationToken cancellationToken = default);
+            string countryCode = null,
+            CancellationToken cancellationToken = default
+            );
 
-        Task<Country> GetCountryWithDetailAsync(Guid id, CancellationToken cancellationToken = default);
+        Task<Country> GetCountryWithDetailAsync(
+            Guid id,
+            CancellationToken cancellationToken = default
+            );
 
     }
 }

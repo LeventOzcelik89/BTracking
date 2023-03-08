@@ -20,6 +20,8 @@ namespace BTracking.UT.Countries
         public const int PropertyNameMinLength = 0;
         public const int PropertyNameMaxLength = 255;
 
+        public const string DBTurkeyCode = "tr-TR";
+
     }
 
 }

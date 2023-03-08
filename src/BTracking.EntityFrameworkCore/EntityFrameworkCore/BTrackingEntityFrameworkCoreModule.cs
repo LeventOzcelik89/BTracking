@@ -13,6 +13,12 @@ using Volo.Abp.PermissionManagement.EntityFrameworkCore;
 using Volo.Abp.SettingManagement.EntityFrameworkCore;
 using Volo.Abp.TenantManagement.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Azure;
+using Microsoft.VisualBasic;
+using NetTopologySuite.Geometries;
+using System.Data;
+using BTracking.UT.Countries;
+using BTracking.UT.Cities;
 
 namespace BTracking.EntityFrameworkCore;
 
@@ -37,11 +43,16 @@ public class BTrackingEntityFrameworkCoreModule : AbpModule
 
     public override void ConfigureServices(ServiceConfigurationContext context)
     {
+
         context.Services.AddAbpDbContext<BTrackingDbContext>(options =>
         {
-                /* Remove "includeAllEntities: true" to create
-                 * default repositories only for aggregate roots */
+
             options.AddDefaultRepositories(includeAllEntities: true);
+
+            options.AddRepository<Country, EfCoreCountryRepository>();
+            options.AddRepository<City, EfCoreCityRepository>();
+            options.AddRepository<Country, EfCoreCountryRepository>();
+
         });
 
         Configure<AbpDbContextOptions>(options =>
