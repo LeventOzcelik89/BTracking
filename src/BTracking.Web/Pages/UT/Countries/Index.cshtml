@@ -1,0 +1,44 @@
+﻿@page
+@using BTracking.Web.Menus;
+@using Microsoft.AspNetCore.Authorization
+@using Volo.Abp.AspNetCore.Mvc.UI.Layout
+@using BTracking.Permissions
+@using BTracking.Web.Pages.UT.Countries
+@using Microsoft.AspNetCore.Mvc.Localization
+@using BTracking.Localization
+@inject IHtmlLocalizer<BTrackingResource> L
+@inject IAuthorizationService Authorization
+@model IndexModel
+@inject IPageLayout PageLayout
+@{
+    PageLayout.Content.Title = L["Countries"].Value;
+    PageLayout.Content.MenuItemName = BTrackingMenus.Countries;
+    var editPermission = await Authorization.IsGrantedAsync(BTrackingPermissions.Country.Edit);
+    var deletePermission = await Authorization.IsGrantedAsync(BTrackingPermissions.Country.Delete);
+    var createPermission = await Authorization.IsGrantedAsync(BTrackingPermissions.Country.Create);
+}
+@section scripts
+    {
+    <abp-script src="/Pages/UT/Countries/index.js" />
+}
+
+@section content_toolbar {
+
+    @if (createPermission)
+    {
+        <abp-button text="@L["Countries"].Value" icon="plus" button-type="Primary" />
+        @*<abp-button text="@L["Countries"].Value" icon="plus" onclick="ruleCategories.actions.create()" button-type="Primary" />*@
+    }
+}
+
+<abp-card>
+    <abp-card-body>
+
+            .Read(read => read.Url("/api/app/rule-categories/datasource")).PageSize(25)
+            .Sort(a => { a.Add(c => c.CreationTime).Descending(); a.Add(c => c.LastModificationTime).Descending(); })
+            .Create(create => create.Url("/api/app/rule-categories").Type(HttpVerbs.Post).Headers(new Dictionary<string, string> { { "content-type", "application/json;charset=utf-8" } }))
+            .Update(update => update.Url("/api/app/rule-categories/{0}").Type(HttpVerbs.Put).Headers(new Dictionary<string, string> { { "content-type", "application/json;charset=utf-8" } }))
+            .Destroy(destroy => destroy.Url("/api/app/rule-categories/{0}").Type(HttpVerbs.Delete))
+
+    </abp-card-body>
+</abp-card>

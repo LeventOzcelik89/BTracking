@@ -11,8 +11,9 @@ using Volo.Abp.DependencyInjection;
 
 namespace BTracking.UT.Towns
 {
-
-    public class TownDataSeedContributor : IDataSeedContributor, ITransientDependency
+    //  IDataSeedContributor kaldırıldı. Sıralı bir işlem gerektiğinden sebep DataSeederConfig içerisine taşındı.
+    //  public class TownDataSeedContributor : IDataSeedContributor, ITransientDependency
+    public class TownDataSeedContributor : ITransientDependency
     {
         private string _sourceDir =>
             System.IO.Directory.GetParent(System.Environment.CurrentDirectory).Parent.Parent.Parent.FullName +

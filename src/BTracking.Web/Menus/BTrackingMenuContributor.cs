@@ -34,6 +34,17 @@ public class BTrackingMenuContributor : IMenuContributor
             )
         );
 
+        context.Menu.Items.Insert(
+            0,
+            new ApplicationMenuItem(
+                BTrackingMenus.Countries,
+                l["Menu:Countries"],
+                "~/",
+                icon: "fas fa-home",
+                order: 1
+            )
+        );
+
         if (MultiTenancyConsts.IsEnabled)
         {
             administration.SetSubItemOrder(TenantManagementMenuNames.GroupName, 1);

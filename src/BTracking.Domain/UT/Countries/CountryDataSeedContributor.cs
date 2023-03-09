@@ -8,7 +8,9 @@ using Volo.Abp.DependencyInjection;
 
 namespace BTracking.UT.Countries
 {
-    public class CountryDataSeedContributor : IDataSeedContributor, ITransientDependency
+    //  IDataSeedContributor kaldırıldı. Sıralı bir işlem gerektiğinden sebep DataSeederConfig içerisine taşındı.
+    //  public class CountryDataSeedContributor : IDataSeedContributor, ITransientDependency
+    public class CountryDataSeedContributor : ITransientDependency
     {
         private string _sourceDir =>
             System.IO.Directory.GetParent(System.Environment.CurrentDirectory).Parent.Parent.Parent.FullName +

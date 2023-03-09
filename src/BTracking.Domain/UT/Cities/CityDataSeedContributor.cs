@@ -9,7 +9,9 @@ using Volo.Abp.DependencyInjection;
 
 namespace BTracking.UT.Cities
 {
-    public class CityDataSeedContributor : IDataSeedContributor, ITransientDependency
+    //  IDataSeedContributor kaldırıldı. Sıralı bir işlem gerektiğinden sebep DataSeederConfig içerisine taşındı.
+    //  public class CityDataSeedContributor : IDataSeedContributor, ITransientDependency
+    public class CityDataSeedContributor : ITransientDependency
     {
         private string _sourceDir =>
             System.IO.Directory.GetParent(System.Environment.CurrentDirectory).Parent.Parent.Parent.FullName +
@@ -46,7 +48,7 @@ namespace BTracking.UT.Cities
                     {
                         Name = feature.Attributes["NAME_1"].ToString(),
                         Shape = feature.Geometry,
-                        CountryId  = country.Id
+                        CountryId = country.Id
                     }, autoSave: true);
                 }
 
