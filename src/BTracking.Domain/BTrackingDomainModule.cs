@@ -58,6 +58,7 @@ public class BTrackingDomainModule : AbpModule
         Configure<AbpMultiTenancyOptions>(options =>
         {
             options.IsEnabled = MultiTenancyConsts.IsEnabled;
+            options.DatabaseStyle = MultiTenancyDatabaseStyle.PerTenant;
         });
 
 #if DEBUG
