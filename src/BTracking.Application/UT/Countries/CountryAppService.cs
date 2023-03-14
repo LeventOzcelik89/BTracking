@@ -25,10 +25,10 @@ namespace BTracking.UT.Countries
         [Authorize(BTrackingPermissions.Country.Create)]
         public virtual async Task<CountryDto> CreateAsync(CountryCreateDto input)
         {
-            var locationCodeExist = await _countryRepository.AnyAsync(a => a.Code == input.CountryCode);
-            if (locationCodeExist)
+            var isExist = await _countryRepository.AnyAsync(a => a.Code == input.CountryCode);
+            if (isExist)
             {
-                throw new UserFriendlyException(L["LocationCodeExists"]);
+                throw new UserFriendlyException(L["CountryIdentityExists"]);
             }
 
             var country = ObjectMapper.Map<CountryCreateDto, Country>(input);
@@ -66,10 +66,10 @@ namespace BTracking.UT.Countries
         [Authorize(BTrackingPermissions.Country.Edit)]
         public virtual async Task<CountryDto> UpdateAsync(Guid id, CountryUpdateDto input)
         {
-            var locationCodeExist = await _countryRepository.AnyAsync(a => a.Code == input.CountryCode && a.Id != id);
-            if (locationCodeExist)
+            var isExist = await _countryRepository.AnyAsync(a => a.Code == input.CountryCode && a.Id != id);
+            if (isExist)
             {
-                throw new UserFriendlyException(L["LocationCodeExists"]);
+                throw new UserFriendlyException(L["CountryIdentityExists"]);
             }
 
             var country = await _countryRepository.GetAsync(id);

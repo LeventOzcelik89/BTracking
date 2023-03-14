@@ -14,6 +14,7 @@ namespace BTracking.UT.Cities
 
         Task<List<City>> GetListAsync(
             string filterText = null,
+            Guid? countryId = null,
             string sorting = null,
             int maxResultCount = int.MaxValue,
             int skipCount = 0,
@@ -22,6 +23,7 @@ namespace BTracking.UT.Cities
 
         Task<long> GetCountAsync(
             string filterText = null,
+            Guid? countryId = null,
             CancellationToken cancellationToken = default
             );
 

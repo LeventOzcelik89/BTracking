@@ -4,6 +4,11 @@
     "Menu:Home": "Home",
     "Welcome": "Welcome",
     "LongWelcomeMessage": "Welcome to the application. This is a startup project based on the ABP framework. For more information, visit abp.io.",
-    "CountryIdentityExists": "Location Code Is In The System."
+    "CountryIdentityExists": "Location Code Is In The System.",
+    "CityIdentityExists": "City Is In The System.",
+
+    "Menu:Countries": "Countries",
+    "Countries": "Countries"
+
   }
 }

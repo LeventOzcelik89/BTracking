@@ -11,7 +11,6 @@ namespace BTracking.UT.Countries
         public string CountryName { get; set; }
         public string CountryCode { get; set; }
         public Geometry CountryShape { get; set; }
-        
     }
 
 }

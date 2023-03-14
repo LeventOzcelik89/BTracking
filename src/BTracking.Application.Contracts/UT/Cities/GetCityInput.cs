@@ -3,16 +3,15 @@ using System.Collections.Generic;
 using System.Text;
 using Volo.Abp.Application.Dtos;
 
-namespace BTracking.UT.Countries
+namespace BTracking.UT.Cities
 {
-
-    public class GetCountryInput : PagedAndSortedResultRequestDto
+    public class GetCityInput : PagedAndSortedResultRequestDto
     {
+        public Guid CountryId { get; set; }
+
         public string FilterText { get; set; }
 
-        public string CountryCode { get; set; }
-        
-        public GetCountryInput()
+        public GetCityInput()
         {
 
         }

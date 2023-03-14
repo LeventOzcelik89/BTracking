@@ -31,6 +31,7 @@ namespace BTracking.UT.Cities
 
         public async Task<long> GetCountAsync(
             string filterText = null,
+            Guid? countryId = null,
             CancellationToken cancellationToken = default)
         {
             var query = ApplyFilter(await GetDbSetAsync(), filterText);
@@ -47,6 +48,7 @@ namespace BTracking.UT.Cities
 
         public async Task<List<City>> GetListAsync(
             string filterText = null,
+            Guid? countryId = null,
             string sorting = null,
             int maxResultCount = int.MaxValue,
             int skipCount = 0,
