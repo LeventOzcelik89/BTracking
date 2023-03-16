@@ -8,6 +8,13 @@
     "CityIdentityExists": "Şehir Sistemde Bulunmaktadır.",
 
     "Menu:Countries": "Ülkeler",
-    "Countries": "Ülkeler"
+    "Countries": "Ülkeler",
+
+    "Permission:Categories": "Kategoriler",
+    "Permission:KontrolBulutu": "Kontrol Bulutu",
+    "Permission:Create": "Oluştur",
+    "Permission:Edit": "Güncelle",
+    "Permission:Delete": "Sil",
+    "Permission:DataSources": "Veri Kaynakları"
   }
 }

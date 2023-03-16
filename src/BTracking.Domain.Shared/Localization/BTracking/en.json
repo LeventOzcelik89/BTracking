@@ -8,7 +8,14 @@
     "CityIdentityExists": "City Is In The System.",
 
     "Menu:Countries": "Countries",
-    "Countries": "Countries"
+    "Countries": "Countries",
+
+    "Permission:Categories": "Categories",
+    "Permission:KontrolBulutu": "Kontrol Bulutu",
+    "Permission:Create": "Create",
+    "Permission:Edit": "Edit",
+    "Permission:Delete": "Delete",
+    "Permission:DataSources": "Data Sources"
 
   }
 }

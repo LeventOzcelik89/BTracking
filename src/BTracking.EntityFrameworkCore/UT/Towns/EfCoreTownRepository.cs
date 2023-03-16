@@ -24,13 +24,14 @@ namespace BTracking.UT.Towns
 
         protected virtual IQueryable<Town> ApplyFilter(
             IQueryable<Town> query,
-            string filterText)
+            string filterText,
+            Guid? cityId = null)
         {
             return query
                     .WhereIf(!string.IsNullOrWhiteSpace(filterText), e => e.Name.Contains(filterText));
         }
 
-        public async Task<List<Town>> GetListAsync(string filterText = null, string sorting = null, int maxResultCount = int.MaxValue, int skipCount = 0, CancellationToken cancellationToken = default)
+        public async Task<List<Town>> GetListAsync(string filterText = null, Guid? cityId = null, string sorting = null, int maxResultCount = int.MaxValue, int skipCount = 0, CancellationToken cancellationToken = default)
         {
             var query = ApplyFilter(await GetQueryableAsync(), filterText);
             query = query.OrderBy(string.IsNullOrWhiteSpace(sorting) ? CountryConsts.GetDefaultSorting(false) : sorting);
@@ -39,6 +40,7 @@ namespace BTracking.UT.Towns
 
         public async Task<long> GetCountAsync(
             string filterText = null,
+            Guid? cityId = null,
             CancellationToken cancellationToken = default)
         {
             var query = ApplyFilter(await GetDbSetAsync(), filterText);
@@ -51,6 +53,7 @@ namespace BTracking.UT.Towns
             var rs = await dbSet.Where(a => a.Id == id).FirstOrDefaultAsync(cancellationToken);
             return rs;
         }
+
     }
 
 }
