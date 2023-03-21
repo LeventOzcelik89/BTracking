@@ -35,7 +35,7 @@ public class BTrackingMenuContributor : IMenuContributor
         );
 
         context.Menu.Items.Insert(
-            0,
+            1,
             new ApplicationMenuItem(
                 BTrackingMenus.Countries,
                 l["Menu:Countries"],
