@@ -25,6 +25,12 @@ public class BTrackingPermissionDefinitionProvider : PermissionDefinitionProvide
         dataSourceTown.AddChild(BTrackingPermissions.Town.Edit, L("Permission:Edit"));
         dataSourceTown.AddChild(BTrackingPermissions.Town.Delete, L("Permission:Delete"));
 
+        var dataSourceFinance = myGroup.AddPermission(BTrackingPermissions.Finance.Default, L("Permission:DataSources"));
+        dataSourceFinance.AddChild(BTrackingPermissions.Finance.Create, L("Permission:Create"));
+        dataSourceFinance.AddChild(BTrackingPermissions.Finance.Edit, L("Permission:Edit"));
+        dataSourceFinance.AddChild(BTrackingPermissions.Finance.Delete, L("Permission:Delete"));
+
+
         //Define your own permissions here. Example:
         //myGroup.AddPermission(BTrackingPermissions.MyPermission1, L("Permission:MyPermission1"));
     }

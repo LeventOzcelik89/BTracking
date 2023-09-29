@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "BTracking.Finance": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:64815;http://localhost:64816"
+    }
+  }
+}

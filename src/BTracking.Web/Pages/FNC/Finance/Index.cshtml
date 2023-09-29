@@ -3,7 +3,7 @@
 @using Microsoft.AspNetCore.Authorization
 @using Volo.Abp.AspNetCore.Mvc.UI.Layout
 @using BTracking.Permissions
-@using BTracking.Web.Pages.UT.Countries
+@using BTracking.Web.Pages.UT.Finance
 @using Microsoft.AspNetCore.Mvc.Localization
 @using BTracking.Localization
 @inject IHtmlLocalizer<BTrackingResource> L
@@ -11,11 +11,11 @@
 @model IndexModel
 @inject IPageLayout PageLayout
 @{
-    PageLayout.Content.Title = L["Countries"].Value;
-    PageLayout.Content.MenuItemName = BTrackingMenus.Countries;
-    var editPermission = await Authorization.IsGrantedAsync(BTrackingPermissions.Country.Edit);
-    var deletePermission = await Authorization.IsGrantedAsync(BTrackingPermissions.Country.Delete);
-    var createPermission = await Authorization.IsGrantedAsync(BTrackingPermissions.Country.Create);
+    PageLayout.Content.Title = L["Finance"].Value;
+    PageLayout.Content.MenuItemName = BTrackingMenus.Finance;
+    var editPermission = await Authorization.IsGrantedAsync(BTrackingPermissions.Finance.Edit);
+    var deletePermission = await Authorization.IsGrantedAsync(BTrackingPermissions.Finance.Delete);
+    var createPermission = await Authorization.IsGrantedAsync(BTrackingPermissions.Finance.Create);
 }
 @*@section scripts
     {
@@ -26,7 +26,7 @@
 
     @if (createPermission)
     {
-        <abp-button text="@L["Countries"].Value" icon="plus" button-type="Primary" />
+        <abp-button text="@L["Finance"].Value" icon="plus" button-type="Primary" />
         @*<abp-button text="@L["Countries"].Value" icon="plus" onclick="ruleCategories.actions.create()" button-type="Primary" />*@
     }
 }

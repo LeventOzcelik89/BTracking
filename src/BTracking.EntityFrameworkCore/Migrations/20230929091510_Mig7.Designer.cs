@@ -4,6 +4,7 @@ using BTracking.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NetTopologySuite.Geometries;
 using Volo.Abp.EntityFrameworkCore;
@@ -13,9 +14,11 @@ using Volo.Abp.EntityFrameworkCore;
 namespace BTracking.EntityFrameworkCore
 {
     [DbContext(typeof(BTrackingDbContext))]
-    partial class BTrackingDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230929091510_Mig7")]
+    partial class Mig7
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -60,7 +63,7 @@ namespace BTracking.EntityFrameworkCore
                         .HasColumnType("uniqueidentifier")
                         .HasColumnName("LastModifierId");
 
-                    b.Property<string>("cap")
+                    b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("date")
@@ -68,18 +71,6 @@ namespace BTracking.EntityFrameworkCore
 
                     b.Property<Guid>("financeId")
                         .HasColumnType("uniqueidentifier");
-
-                    b.Property<double>("high")
-                        .HasColumnType("float");
-
-                    b.Property<double>("low")
-                        .HasColumnType("float");
-
-                    b.Property<double>("now")
-                        .HasColumnType("float");
-
-                    b.Property<double>("open")
-                        .HasColumnType("float");
 
                     b.HasKey("Id");
 

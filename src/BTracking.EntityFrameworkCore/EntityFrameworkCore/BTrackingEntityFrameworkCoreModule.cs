@@ -19,6 +19,7 @@ using NetTopologySuite.Geometries;
 using System.Data;
 using BTracking.UT.Countries;
 using BTracking.UT.Cities;
+using BTracking.FNC.FinanceDailyData;
 
 namespace BTracking.EntityFrameworkCore;
 
@@ -52,6 +53,7 @@ public class BTrackingEntityFrameworkCoreModule : AbpModule
             options.AddRepository<Country, EfCoreCountryRepository>();
             options.AddRepository<City, EfCoreCityRepository>();
             options.AddRepository<Country, EfCoreCountryRepository>();
+            options.AddRepository<FinanceDailyData, EfCoreFinanceDailyDataRepository>();
 
         });
 

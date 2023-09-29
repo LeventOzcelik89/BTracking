@@ -7,8 +7,11 @@
     "LongWelcomeMessage": "Uygulamaya hoşgeldiniz. Bu, ABP framework'ü üzerine bina edilmiş bir başlangıç projesidir. Daha fazla bilgi için abp.io adresini ziyaret edebilirsiniz.",
     "CountryIdentityExists": "Ülke Kodu Sistemde Bulunmaktadır.",
     "CityIdentityExists": "Şehir Sistemde Bulunmaktadır.",
+
     "Menu:Countries": "Ülkeler",
     "Countries": "Ülkeler",
+    "Menu:Finance": "Finans",
+    "Finance": "Finans",
 
     "Permission:Categories": "Kategoriler",
     "Permission:KontrolBulutu": "Kontrol Bulutu",

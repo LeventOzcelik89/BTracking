@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using BTracking.Localization;
 using BTracking.MultiTenancy;
+using BTracking.Permissions;
 using Volo.Abp.Identity.Web.Navigation;
 using Volo.Abp.SettingManagement.Web.Navigation;
 using Volo.Abp.TenantManagement.Web.Navigation;
@@ -39,9 +40,20 @@ public class BTrackingMenuContributor : IMenuContributor
             new ApplicationMenuItem(
                 BTrackingMenus.Countries,
                 l["Menu:Countries"],
-                "~/",
-                icon: "fas fa-home",
+                "~/UT/Countries",
+                icon: "fas fa-map-marker",
                 order: 1
+            )
+        );
+
+        context.Menu.Items.Insert(
+            1,
+            new ApplicationMenuItem(
+                BTrackingMenus.Finance,
+                l["Menu:Finance"],
+                "~/FNC/Finance",
+                icon: "fas fa-money-bill",
+                order: 2
             )
         );
 

@@ -1,4 +1,5 @@
-﻿using BTracking.UT.Cities;
+﻿using BTracking.FNC.FinanceDailyData;
+using BTracking.UT.Cities;
 using BTracking.UT.Countries;
 using BTracking.UT.Towns;
 using Microsoft.EntityFrameworkCore;
@@ -32,6 +33,7 @@ public class BTrackingDbContext :
     public DbSet<Country> Countries { get; set; }
     public DbSet<City> Cities { get; set; }
     public DbSet<Town> Towns { get; set; }
+    public DbSet<FinanceDailyData> FinanceDailyDatas { get; set; }
 
     #region Entities from the modules
 
